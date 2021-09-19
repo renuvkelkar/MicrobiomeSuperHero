@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatefulWidget {
+class DemoSplashScreen extends StatefulWidget {
 
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _DemoSplashScreenState createState() => _DemoSplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _DemoSplashScreenState extends State<DemoSplashScreen> {
   @override
   final ref = FirebaseFirestore.instance.collection("Category");
   Widget build(BuildContext context) {
