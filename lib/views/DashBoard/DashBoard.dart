@@ -8,11 +8,14 @@ import 'package:velocity_x/velocity_x.dart';
 class DashBoard extends StatefulWidget {
 
 
+
   @override
+
   _DashBoardState createState() => _DashBoardState();
 }
 
 class _DashBoardState extends State<DashBoard> {
+
   final CatRef = FirebaseFirestore.instance.collection("Category");
   @override
   Widget build(BuildContext context) {
@@ -52,7 +55,7 @@ class _DashBoardState extends State<DashBoard> {
                                  )));
                                },
                                child: Container(
-                                 height: context.screenHeight*0.12,
+                                 height: context.screenHeight*0.10,
                                  width: context.screenWidth*0.7,
                                  decoration: BoxDecoration(
                                    color: Color(int.parse(snapshot.data!.docs[index]['cat_color'])),
@@ -61,27 +64,9 @@ class _DashBoardState extends State<DashBoard> {
 
                                  child: Text(categoryList[index].cat_name.toString()).text.xl2.bold.white.makeCentered(),
 
-                               ).p8(),
+                               ).p16(),
                              );
-                             // return Center(
-                             //   child: Card(
-                             //     child: Container(
-                             //
-                             //       child: Stack(
-                             //         children: [
-                             //
-                             //           Image.network(categoryList[index]["cat_img"],height:context.screenHeight*0.23,width:context.screenWidth*0.45,fit: BoxFit.cover,),
-                             //           VxBox(
-                             //             child: Text(categoryList[index]["cat_name"]).text.xl2.white.makeCentered()
-                             //           ).height(context.screenHeight*0.06).width(context.screenWidth*0.45).color(Colors.green.withOpacity(0.9)).make(),
-                             //
-                             //
-                             //
-                             //         ],
-                             //       ),
-                             //     ).p4(),
-                             //   ),
-                             // );
+
                            }),
                      );
                    }

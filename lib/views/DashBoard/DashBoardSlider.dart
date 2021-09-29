@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class BannerList extends StatelessWidget {
+  @override
+  initState() {
+
+  }
 
   @override
   final ref = FirebaseFirestore.instance.collection("Banner");
@@ -15,7 +19,7 @@ class BannerList extends StatelessWidget {
       child: StreamBuilder(
         stream: ref.snapshots(),
         builder: (context,AsyncSnapshot<QuerySnapshot>snapshot){
-          var bannerList = snapshot.data!.docs;
+          var bannerList = snapshot.data?.docs;
           if(snapshot.hasData){
             return VxSwiper.builder(
                 itemCount: snapshot.data!.docs.length,
@@ -41,7 +45,10 @@ class BannerList extends StatelessWidget {
                 }).p4();
           }
           else{
-            return CircularProgressIndicator();
+            return CircularProgressIndicator(
+              backgroundColor: Colors.white,
+              strokeWidth: 1,
+            );
           }
 
       },
