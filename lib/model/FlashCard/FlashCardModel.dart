@@ -12,13 +12,14 @@ class FlashModel{
    List?  intresting_facts;
   String? protein_count;
   String? taste;
-   List?  vitamins;
+
    String? vitamin;
   String? fats;
   String? footer_img;
+  List? recipe;
 
   FlashModel({this.cat_name,this.cat_id,this.color,this.calories,this.f_desc,this.f_img_back,this.f_img_front,this.f_name,this.fibre_count,this.health_benefits,
-  this.intresting_facts,this.protein_count,this.taste,this.vitamins,this.vitamin,this.fats,this.footer_img});
+  this.intresting_facts,this.protein_count,this.taste,this.vitamin,this.fats,this.footer_img,this.recipe});
 
   FlashModel.fromJson(Map<String, dynamic> json) {
     cat_id = json['cat_id'];
@@ -34,10 +35,11 @@ class FlashModel{
     intresting_facts = json['intresting_facts'];
     protein_count = json['protein_count'];
     taste = json['taste'];
-    vitamins = json['vitamins'];
+
     vitamin = json['vitamin'];
     fats = json['fats'];
     footer_img = json['footer_img'];
+    recipe = json['recipe_link'];
 
 
   }
@@ -56,10 +58,11 @@ class FlashModel{
     Data['intresting_facts'] = this.intresting_facts;
     Data['protein_count'] = this.protein_count;
     Data['taste'] = this.taste;
-    Data['vitamins'] = this.vitamins;
     Data['vitamin'] = this.vitamin;
     Data['fats'] = this.fats;
     Data['footer_img'] = this.footer_img;
+    Data['recipe_link'] = this.recipe;
+
 
     return Data;
   }

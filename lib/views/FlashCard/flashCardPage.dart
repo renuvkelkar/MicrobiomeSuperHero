@@ -1,4 +1,7 @@
 import 'package:aahaarkarnti_chart_app/model/FlashCard/FlashCardModel.dart';
+import 'package:aahaarkarnti_chart_app/views/FlashCard/widgets/healthBenefits.dart';
+import 'package:aahaarkarnti_chart_app/views/FlashCard/widgets/intrestingFacts.dart';
+import 'package:aahaarkarnti_chart_app/views/FlashCard/widgets/recipeWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
@@ -56,6 +59,8 @@ class _FlashCardPageState extends State<FlashCardPage> {
                                 .map((e) => FlashModel.fromJson(e.data()as Map<String, dynamic>))
                                 .toList();
                    // backColor = Color(int.parse(snapshot.data!.docs[index]['cat_color']));
+                    print("healthbenefits length********************************************");
+                    print(FlashCardList[index].health_benefits!.length);
                     return
                       FlipCard(
                         flipOnTouch: true,
@@ -180,45 +185,43 @@ class _FlashCardPageState extends State<FlashCardPage> {
                               children: [
                                 Container(
                                   color: Color(int.parse(widget.catColor)),
+                                  child: Text("Intresting Facts").text.xl2.semiBold.white.makeCentered().p4(),
+                                ),
+                                VxBox(
+                                  child: Column(
+                                    children: [
+                                      IntrestingfactsPage( facts: FlashCardList[index], ),
+
+                                    ],
+                                  )
+                                ).makeCentered(),
+
+                                Container(
+                                  color: Color(int.parse(widget.catColor)),
                                   child: Text("Health Benefits").text.xl2.semiBold.white.makeCentered().p4(),
                                 ),
                                 VxBox(
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-
-                                      itemCount: FlashCardList[index].health_benefits?.length,
-                                      itemBuilder: (context,index){
-
-
-                                        return Row(
-                                          children: [
-                                            Icon(Icons.check_circle,color: Color(int.parse(widget.catColor))),
-                                            3.widthBox,
-                                            Text(FlashCardList[0].health_benefits![index].toString()).text.xl.semiBold.gray500.make().py8(),
-                                          ],
-                                        );
-                                      })
-                                ).make().p4(),
+                                    child: Column(
+                                      children: [
+                                        HealthBenefits( health: FlashCardList[index],),
+                                        //  Text(FlashCardList[index].intresting_facts![index])
+                                      ],
+                                    )
+                                ).makeCentered(),
                                 Container(
                                   color: Color(int.parse(widget.catColor)),
-                                  child: Text("Interesting Facts").text.xl2.semiBold.white.makeCentered().p4(),
+                                  child: Text("Recipe").text.xl2.semiBold.white.makeCentered().p4(),
                                 ),
                                 VxBox(
-                                    child: ListView.builder(
-                                        shrinkWrap: true,
+                                    child: Column(
+                                      children: [
+                                        RecipeWiget( recipe: FlashCardList[index],),
+                                        //  Text(FlashCardList[index].intresting_facts![index])
+                                      ],
+                                    )
+                                ).makeCentered(),
 
-                                        itemCount: FlashCardList[index].intresting_facts?.length,
-                                        itemBuilder: (context,index){
 
-                                          return Row(
-                                            children: [
-                                              Icon(Icons.check_circle,color: Color(int.parse(widget.catColor))),
-                                              3.widthBox,
-                                              Text(FlashCardList[0].intresting_facts![index].toString()).text.xl.semiBold.gray500.make().py8(),
-                                            ],
-                                          );
-                                        })
-                                ).make().p4(),
                                 Align(
                                   alignment: Alignment.centerRight,
                                     child: Image.network(FlashCardList[index].footer_img.toString(),height: 60,width: 60,fit: BoxFit.cover,))

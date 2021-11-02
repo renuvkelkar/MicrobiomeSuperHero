@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:aahaarkarnti_chart_app/views/DashBoard/DashBoard.dart';
 import 'package:aahaarkarnti_chart_app/views/IntroSlider/inroSlider.dart';
+import 'package:aahaarkarnti_chart_app/views/IntroSlider/introslider_web.dart';
 import 'package:aahaarkarnti_chart_app/views/SelectionScreen/selectionScreen.dart';
 import 'package:flutter/material.dart';
 import "package:velocity_x/velocity_x.dart";
@@ -25,7 +26,7 @@ class _SplashscreenState extends State<Splashscreen> {
     super.initState();
     Timer(Duration(seconds: 5), (){
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => IntroScreen(),
+        builder: (context) => context.isMobile?IntroScreen():IntroScreenWeb(),
       ));
     });
   }

@@ -36,7 +36,9 @@ dependencies:
   easy_localization:
   lottie: ^1.1.0
   intro_slider: ^3.0.2
-  confetti: ^0.5.5
+  url_launcher:
+  provider:
+
 
 
 dev_dependencies:
