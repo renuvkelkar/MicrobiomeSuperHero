@@ -57,7 +57,7 @@ class _QuizPlayState extends State<QuizPlay> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurpleAccent[100],
+      backgroundColor: Colors.teal,
       appBar: VxAppBar(
         title: "Lets play Quiz!".text.make(),
         centerTitle: true,
@@ -159,50 +159,53 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
   Widget build(BuildContext context) {
     return   Consumer<QuizProvider>(
       builder:(_,model,child)=> Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          VxBox(
-            // margin: EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              "Q${widget.index + 1}: ${model.questions[widget.index].question}",
-              style:
-                  TextStyle(fontSize: 18, color: Colors.black.withOpacity(0.8)),
-            ).centered(),
-          ).make().capsule(
-                width: context.screenWidth,
-                height: 80,
-                backgroundColor: Colors.white,
-              ),
-          20.heightBox,
-        ListView.builder(
-              shrinkWrap: true,
-              itemCount: model.questions[widget.index].shuffledOptions.length,
-                itemBuilder: (_, i) => GestureDetector(
-                      onTap: () {
-                       if(!model.questions[widget.index].answered) {
-                                optionSelected = model
-                                    .questions[widget.index].shuffledOptions[i];
-                                setState(() {});
-                                model.setOptionSelected(
-                                    optionSelected, widget.index);
-                              }else{
-                         //Show the Snackbar
-                       }
-                       widget.questionSelected.call();
-                            },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0).copyWith(top:10),
-                        child: OptionTile(
-                            sno: alphoPTION[i],
-                            disabled:model.questions[widget.index].answered,
-                            correctAnswer: model.questions[widget.index].correctOption,
-                            option: model.questions[widget.index].shuffledOptions[i],
-                            optionSelected: optionSelected),
-                      ),
-                    )),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.network(model.questions[widget.index].imgurl,height: 200,width: 200,fit: BoxFit.cover,),
+            VxBox(
+              // margin: EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                "Q${widget.index + 1}: ${model.questions[widget.index].question}",
+                style:
+                    TextStyle(fontSize: 18, color: Colors.black.withOpacity(0.8)),
+              ).centered(),
+            ).make().capsule(
+                  width: context.screenWidth,
+                  height: 40,
+                  backgroundColor: Colors.white,
+                ),
+            5.heightBox,
+          ListView.builder(
+                shrinkWrap: true,
+                itemCount: model.questions[widget.index].shuffledOptions.length,
+                  itemBuilder: (_, i) => GestureDetector(
+                        onTap: () {
+                         if(!model.questions[widget.index].answered) {
+                                  optionSelected = model
+                                      .questions[widget.index].shuffledOptions[i];
+                                  setState(() {});
+                                  model.setOptionSelected(
+                                      optionSelected, widget.index);
+                                }else{
+                           //Show the Snackbar
+                         }
+                         widget.questionSelected.call();
+                              },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: OptionTile(
+                              sno: alphoPTION[i],
+                              disabled:model.questions[widget.index].answered,
+                              correctAnswer: model.questions[widget.index].correctOption,
+                              option: model.questions[widget.index].shuffledOptions[i],
+                              optionSelected: optionSelected),
+                        ),
+                      )),
+          ],
+        ),
       ),
-    ).p12());
+    ).p4());
   }
 }

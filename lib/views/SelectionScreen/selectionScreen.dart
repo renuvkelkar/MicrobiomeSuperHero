@@ -1,4 +1,5 @@
 import 'package:aahaarkarnti_chart_app/views/DashBoard/DashBoard.dart';
+import 'package:aahaarkarnti_chart_app/views/Game/game.dart';
 import 'package:aahaarkarnti_chart_app/views/Quiz/quiz_play.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -55,7 +56,7 @@ class _SelectionScreenState extends State<SelectionScreen> {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => DashBoard()));
+                      context, MaterialPageRoute(builder: (_) => GamePage()));
                 },
                 child: Container(
                   height: context.screenHeight * 0.10,
@@ -111,7 +112,7 @@ class _SelectionScreenState extends State<SelectionScreen> {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => DashBoard()));
+                      context, MaterialPageRoute(builder: (_) => GamePage()));
                 },
                 child: Container(
                   height: context.screenHeight * 0.2,

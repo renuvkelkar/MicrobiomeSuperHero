@@ -1,6 +1,7 @@
 class QuestionModel{
 
   String? question;
+  late String imgurl;
   late String option1;
   late String option2;
   late String option3;
@@ -12,10 +13,11 @@ class QuestionModel{
 
 
   QuestionModel({required this.question,required this.option1,required this.option2,
-    required this.option3,required this.option4,required this.correctOption,required this.answered
+    required this.option3,required this.option4,required this.correctOption,required this.answered,required this.imgurl
   });
 
   QuestionModel.fromJson(Map<String , dynamic> json){
+    imgurl= json['imgurl'];
     question= json['question'];
     option1 = json['option1'];
     option2= json['option2'];

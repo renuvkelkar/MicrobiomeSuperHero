@@ -3,6 +3,7 @@
 import 'package:aahaarkarnti_chart_app/views/Quiz/quiz_play.dart';
 
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Results extends StatefulWidget {
@@ -34,77 +35,111 @@ class _ResultsState extends State<Results> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurpleAccent[100],
+
       appBar: VxAppBar(
         title: "Results".text.make(),
         centerTitle: true,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.teal,
+       // backgroundColor: Colors.transparent,
       ),
-      body: Container(
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              (widget.correct) == (widget.total) ? buildButton() : VxBox(
-                child: TextButton(
-                  onPressed: () {
+      body: Stack(
+        children: [
+          Image.network("https://image.freepik.com/free-vector/empty-classroom-interior-school-college-class_107791-631.jpg",height: context.screenHeight,
+              width: context.screenWidth,fit: BoxFit.cover,),
+          Container(
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  widget.correct >=2?
+                  Container(
+                    child:  Column(
+                      children: [
+                        Text("Good Job!!"),
+                        Lottie.network(
+                            'https://assets7.lottiefiles.com/packages/lf20_xldzoar8.json',
+                            height: 100,
+                            width: 150,
+                            fit: BoxFit.cover),
+                      ],
+                    ),
+                  ):
+                  Container(
+                    child:  Column(
+                      children: [
+                        Text("Well Done!You want to try again"),
+                        Lottie.network(
+                            'https://assets5.lottiefiles.com/private_files/lf30_ansmdrzi.json',
+                            height: 100,
+                            width: 150,
+                            fit: BoxFit.cover),
+                      ],
+                    ),
+                  )
+                  ,
 
-                  },
-                  child: "Well Done!You want to try again?".text.bold.xl2.red700.makeCentered(),
-                ),
-              ).height(80).width(context.screenWidth).make(),
-              // ConfettiWidget(
-              //   confettiController: _controllerCenter,
-              //   blastDirectionality: BlastDirectionality.explosive,
-              //   shouldLoop: false,
-              //   blastDirection: -pi / 2,
-              //   emissionFrequency: 0.01,
-              //   numberOfParticles: 30,
-              //   maxBlastForce: 100,
-              //   minBlastForce: 80,
-              //   //gravity: 0.3,
+                  // (widget.correct) == (widget.total) ? buildButton() : VxBox(
+                  //   child: TextButton(
+                  //     onPressed: () {
+                  //
+                  //     },
+                  //     child: "Well Done!You want to try again?".text.bold.xl2.red700.makeCentered(),
+                  //   ),
+                  // ).height(80).width(context.screenWidth).make(),
+                  // ConfettiWidget(
+                  //   confettiController: _controllerCenter,
+                  //   blastDirectionality: BlastDirectionality.explosive,
+                  //   shouldLoop: false,
+                  //   blastDirection: -pi / 2,
+                  //   emissionFrequency: 0.01,
+                  //   numberOfParticles: 30,
+                  //   maxBlastForce: 100,
+                  //   minBlastForce: 80,
+                  //   //gravity: 0.3,
 
-              //   colors: const [
-              //     Colors.green,
-              //     Colors.blue,
-              //     Colors.pink,
-              //     Colors.black,
-              //     Colors.purple,
-              //     Colors.red,
-              //     Colors.white,
-              //   ],
-              // ),
-              20.heightBox,
-              Text(
-                "Score : ${widget.correct}/ ${widget.total}",
-                style: TextStyle(fontSize: 25),
-              ),
-              5.heightBox,
-              "Correct - ${widget.correct}".text.lg.make().p4(),
-              "Wrong - ${widget.incorrect}".text.lg.make().p4(),
-
-              24.heightBox,
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => QuizPlay()),
-                  );
-                },
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(30)),
-                  child: Text(
-                    "Go to home",
-                    style: TextStyle(color: Colors.white, fontSize: 19),
+                  //   colors: const [
+                  //     Colors.green,
+                  //     Colors.blue,
+                  //     Colors.pink,
+                  //     Colors.black,
+                  //     Colors.purple,
+                  //     Colors.red,
+                  //     Colors.white,
+                  //   ],
+                  // ),
+                  20.heightBox,
+                  Text(
+                    "Score : ${widget.correct}/ ${widget.total}",
+                    style: TextStyle(fontSize: 25),
                   ),
-                ),
-              )
-            ],
+                  5.heightBox,
+                  "Correct - ${widget.correct}".text.lg.make().p4(),
+                  "Wrong - ${widget.incorrect}".text.lg.make().p4(),
+
+                  40.heightBox,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => QuizPlay()),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(30)),
+                      child: Text(
+                        "Go to home",
+                        style: TextStyle(color: Colors.white, fontSize: 19),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
