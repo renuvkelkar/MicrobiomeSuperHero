@@ -22,6 +22,7 @@ class _QuizPlayState extends State<QuizPlay> {
   bool isLoading = true;
   late QuizProvider _quizProvider ;
   late List<QuestionModel> _questions;
+  var ShuffledQueList ;
 
   @override
   void initState() {
@@ -34,7 +35,10 @@ class _QuizPlayState extends State<QuizPlay> {
       });
       _quizProvider.questions=_questions;
       isLoading = false;
-      setState(() {});
+      _questions.shuffle();// this code is for shuffling the question list.
+      setState(() {
+
+      });
     });
 
     super.initState();
@@ -57,11 +61,11 @@ class _QuizPlayState extends State<QuizPlay> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.white,
       appBar: VxAppBar(
         title: "Lets play Quiz!".text.make(),
         centerTitle: true,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.teal,
       ),
       body: isLoading
           ? SingleChildScrollView(
@@ -77,37 +81,43 @@ class _QuizPlayState extends State<QuizPlay> {
                           child: Text("No Data"),
                         ),
                       )
-                    : Container(
-                        height: context.screenHeight * 0.60,
-                        width: context.screenWidth * 0.95,
-                        child: Consumer<QuizProvider>(
-                          builder:(_,model,child)=> PageView.builder(
-                              onPageChanged: (index) {
-                                setState(() {
-                                  pageChanged = index;
-                                });
-                              },
-                              controller: pageController,
-                              itemCount: model.questions.length,
-                              itemBuilder: (context, index) {
-                                return VxBox(
-                                  child: QuizPlayTile(
-                                    questionSelected: () {
-                                      setState(() {
-                                        pageController.animateToPage(index+1, duration: Duration(milliseconds: 200), curve: Curves.bounceIn);
-                                      });
-                                    },
-                                    index: index,
-                                  ),
-                                )
-                                    .height(context.screenHeight * 0.50)
-                                    .width(context.screenWidth * 0.50)
-                                    .make();
-                              }),
-                        ),
-                      ).centered(),
+                    : Column(
+                      children: [
+                      //Image.network("https://image.freepik.com/free-vector/cartoon-vegetables-fresh-vegan-veggies-raw-vegetable-green-zucchini-celery-lettuce-tomato-carrot-illustration-set_102902-1204.jpg",height: context.screenHeight * 0.30,width: context.screenWidth,fit: BoxFit.cover,),
+                         10.heightBox,
+                        Container(
+                            height: context.screenHeight*0.9,
+                            width: context.screenWidth * 0.95,
+                            child: Consumer<QuizProvider>(
+                              builder:(_,model,child)=> PageView.builder(
+                                  onPageChanged: (index) {
+                                    setState(() {
+                                      pageChanged = index;
+                                    });
+                                  },
+                                  controller: pageController,
+                                  itemCount: model.questions.take(10).length,
+                                  itemBuilder: (context, index) {
+                                    return VxBox(
+                                      child: QuizPlayTile(
+                                        questionSelected: () {
+                                          setState(() {
+                                            pageController.animateToPage(index+1, duration: Duration(milliseconds: 200), curve: Curves.bounceIn);
+                                          });
+                                        },
+                                        index: index,
+                                      ),
+                                    )
+                                       // .height(context.screenHeight * 0.50)
+                                        .width(context.screenWidth * 0.50)
+                                        .make();
+                                  }),
+                            ),
+                          ).centered(),
+                      ],
+                    ),
               ],
-            ).scrollVertical(),
+            ),
       floatingActionButton: Consumer<QuizProvider>(
         builder: (_,model,child)=> FloatingActionButton.extended(
           onPressed: () {
@@ -117,7 +127,7 @@ class _QuizPlayState extends State<QuizPlay> {
                     builder: (context) => Results(
                           correct: model.getCorrectCount(),
                           incorrect: model.getInCorrectCount(),
-                          total: model.questions.length,
+                          total: 10,
                           notattempted: model.getNotAttemptedCount(),
                         )));
           },
@@ -125,7 +135,7 @@ class _QuizPlayState extends State<QuizPlay> {
           label: "Quiz Completed".text.make(),
           backgroundColor: Colors.amber,
         ),
-      ),
+      ).pOnly(right: 8,bottom: 8),
     );
   }
 }
@@ -159,20 +169,21 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
   Widget build(BuildContext context) {
     return   Consumer<QuizProvider>(
       builder:(_,model,child)=> Container(
-      child: SingleChildScrollView(
+      child: VxBox(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(model.questions[widget.index].imgurl,height: 200,width: 200,fit: BoxFit.cover,),
+            Image.network(model.questions[widget.index].imgurl,height:context.isMobile? context.screenHeight*0.3:context.screenHeight*0.4,width:context.isMobile? context.screenWidth:context.screenWidth*0.5,fit: BoxFit.cover,),
+            10.heightBox,
             VxBox(
               // margin: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 "Q${widget.index + 1}: ${model.questions[widget.index].question}",
                 style:
                     TextStyle(fontSize: 18, color: Colors.black.withOpacity(0.8)),
-              ).centered(),
+              ).py8().px8(),
             ).make().capsule(
-                  width: context.screenWidth,
+                  width: context.isMobile?context.screenWidth:context.screenWidth*0.6,
                   height: 40,
                   backgroundColor: Colors.white,
                 ),
@@ -203,9 +214,10 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
                               optionSelected: optionSelected),
                         ),
                       )),
+
           ],
         ),
-      ),
+      ).teal500.height(context.screenHeight).width(context.isMobile?context.screenWidth:context.screenWidth*0.5).p8.makeCentered(),
     ).p4());
   }
 }

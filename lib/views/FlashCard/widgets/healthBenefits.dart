@@ -20,12 +20,15 @@ class _HealthBenefitsState extends State<HealthBenefits> {
 
         itemCount: widget.health.health_benefits!.length,
         itemBuilder: (context,index){
-          return Column(
+          return Row(
             children: [
-              Text(widget.health.health_benefits![index].toString()),
+              Image.network(widget.health.footer_img.toString(),height: 20,width: 20,fit: BoxFit.cover,),
+              10.widthBox,
+           //   Icon(Icons.check_box,color: Colors.grey.shade500),
+              Text(widget.health.health_benefits![index].toString()).text.xl.make(),
 
             ],
-          );
+          ).p8();
         });
   }
 

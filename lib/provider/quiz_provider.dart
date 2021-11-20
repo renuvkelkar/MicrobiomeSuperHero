@@ -27,6 +27,7 @@ class QuizProvider extends ChangeNotifier{
     _notAttempted=value.length;
     _incorrect=0;
     _correct = 0;
+
     notifyListeners();
   }
 

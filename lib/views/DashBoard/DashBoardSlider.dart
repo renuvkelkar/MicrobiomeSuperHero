@@ -13,9 +13,10 @@ class BannerList extends StatelessWidget {
   final ref = FirebaseFirestore.instance.collection("Banner");
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.orange.shade300,
+      width: context.isMobile?context.screenWidth:context.screenWidth*0.5,
+      height:context.isMobile? context.screenHeight*0.3:context.screenHeight*0.5,
 
-      width: context.screenWidth,
+
       child: StreamBuilder(
         stream: ref.snapshots(),
         builder: (context,AsyncSnapshot<QuerySnapshot>snapshot){
@@ -37,12 +38,12 @@ class BannerList extends StatelessWidget {
                 autoPlayCurve: Curves.easeInCubic,
                 itemBuilder: (context, index) {
                   return Container(
-                    width: context.screenWidth*0.98,
-                    height: context.screenHeight*0.5,
+                    width: context.isMobile?context.screenWidth:context.screenWidth*0.50,
+                    height:context.isMobile? context.screenHeight*0.5:context.screenHeight*0.6,
 
                     child: Image.network(snapshot.data!.docs[index]['banner_img'],fit: BoxFit.cover,),
-                  );
-                }).p4();
+                  ).pOnly(top: 10);
+                });
           }
           else{
             return CircularProgressIndicator(

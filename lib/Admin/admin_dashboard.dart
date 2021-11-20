@@ -1,6 +1,8 @@
+import 'package:aahaarkarnti_chart_app/Admin/quizData.dart';
 import 'package:flutter/material.dart';
 
 import 'AddData.dart';
+import 'gameData.dart';
 class DashBoard extends StatefulWidget {
 
 
@@ -44,7 +46,7 @@ class _DashBoardState extends State<DashBoard> {
                 child: InkWell(
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(
-                          builder: (_)=>AddData()));
+                          builder: (_)=>GameData()));
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -61,7 +63,7 @@ class _DashBoardState extends State<DashBoard> {
                 child: InkWell(
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(
-                          builder: (_)=>AddData()));
+                          builder: (_)=>QuizData()));
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),

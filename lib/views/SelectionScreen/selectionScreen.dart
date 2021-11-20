@@ -1,9 +1,13 @@
+import 'package:aahaarkarnti_chart_app/food/view/food_page.dart';
 import 'package:aahaarkarnti_chart_app/views/DashBoard/DashBoard.dart';
 import 'package:aahaarkarnti_chart_app/views/Game/game.dart';
 import 'package:aahaarkarnti_chart_app/views/Quiz/quiz_play.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import 'Drawer/MobileDrawer.dart';
+import 'Drawer/WebDrawer.dart';
 
 class SelectionScreen extends StatefulWidget {
   @override
@@ -15,6 +19,16 @@ class _SelectionScreenState extends State<SelectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+      ),
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: context.isMobile?MobileDrawer():WebDrawer()
+      ),
+
 
       body: Stack(
         children: [
@@ -67,6 +81,7 @@ class _SelectionScreenState extends State<SelectionScreen> {
                   child: Text("Puzzle").text.xl2.bold.white.makeCentered(),
                 ).p8(),
               ),
+
               15.heightBox,
               InkWell(
                 onTap: () {
@@ -81,7 +96,22 @@ class _SelectionScreenState extends State<SelectionScreen> {
                       borderRadius: BorderRadius.circular(50)),
                   child: Text("Quiz").text.xl2.bold.white.makeCentered(),
                 ).p8(),
-              )
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => FoodPage(),));
+                },
+                child: Container(
+                  height: context.screenHeight * 0.10,
+                  width: context.screenWidth * 0.7,
+                  decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(50)),
+                  child: Text("Aahaar Plate").text.xl2.bold.white.makeCentered(),
+                ).p8(),
+              ),
+
             ],
           ).py(100).px(50):
           Row(mainAxisAlignment: MainAxisAlignment.center,
@@ -137,7 +167,22 @@ class _SelectionScreenState extends State<SelectionScreen> {
                       borderRadius: BorderRadius.circular(50)),
                   child: Text("Quiz").text.xl2.bold.white.makeCentered(),
                 ).p8(),
-              )
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => GamePage()));
+                },
+                child: Container(
+                  height: context.screenHeight * 0.2,
+                  width: context.screenWidth * 0.2,
+                  decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(50)),
+                  child: Text("Aahaar Plate").text.xl2.bold.white.makeCentered(),
+                ).p8(),
+              ),
+
             ],
           ).py(200).px(50),
           context.isMobile?Positioned(

@@ -10,7 +10,7 @@ class AddData extends StatefulWidget {
 class _AddDataState extends State<AddData> {
   final ref = FirebaseFirestore.instance.collection("FlashCard");
   final _formKey = GlobalKey<FormState>();
-  TextEditingController cat_idcontroller = TextEditingController();
+  // TextEditingController cat_idcontroller = TextEditingController();
   TextEditingController caloriescontroller = TextEditingController();
   TextEditingController cat_namecontroller = TextEditingController();
   TextEditingController health_benifitscontroller = TextEditingController();
@@ -31,7 +31,7 @@ class _AddDataState extends State<AddData> {
 
   addData() {
     addToCard = {
-      'cat_id': cat_idcontroller.text,
+      // 'cat_id': cat_idcontroller.text,
       'calories': caloriescontroller.text,
       'f_img_back': f_img_backcontroller.text,
       'health_benefits': health_benifitscontroller.text.split(","),
@@ -70,17 +70,17 @@ class _AddDataState extends State<AddData> {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                         children: [
-                          TextFormField(
-                            controller: cat_idcontroller,
-                            decoration: InputDecoration(
-                                labelText: 'cat_id',
-                                hintText: 'Enter cat_id'),
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black,
-                            ),
-                          ),
+                          // TextFormField(
+                          //   controller: cat_idcontroller,
+                          //   decoration: InputDecoration(
+                          //       labelText: 'cat_id',
+                          //       hintText: 'Enter cat_id'),
+                          //   style: TextStyle(
+                          //     fontSize: 20,
+                          //     fontWeight: FontWeight.w500,
+                          //     color: Colors.black,
+                          //   ),
+                          // ),
 
                           TextFormField(
                             controller: cat_namecontroller,

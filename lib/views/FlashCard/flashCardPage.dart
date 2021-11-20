@@ -71,7 +71,7 @@ class _FlashCardPageState extends State<FlashCardPage> {
 
                                 Column(
                                   children: [
-                                    Image.network(FlashCardList[index].f_img_front.toString(),height: context.percentHeight*30,width: context.percentWidth*44,fit:BoxFit.fill,),
+                                    Image.network(FlashCardList[index].f_img_front.toString(),height:context.isMobile? context.screenHeight*0.2:context.screenHeight*0.3,width: context.isMobile?context.screenWidth*0.3:context.screenWidth*0.2,fit:BoxFit.contain,),
                                     Text(FlashCardList[index].f_name.toString()).text.xl4.bold.makeCentered(),
                                     Text(FlashCardList[index].f_desc.toString()).text.xl.gray500.makeCentered().p4(),
 
@@ -96,7 +96,7 @@ class _FlashCardPageState extends State<FlashCardPage> {
                                           child: Column(
                                             children: [
 
-                                              Image.network("https://cdn-icons-png.flaticon.com/512/3082/3082050.png",height: 45,width: 45,fit: BoxFit.cover,),
+                                              Image.network("https://cdn-icons-png.flaticon.com/512/4661/4661512.png",height: 45,width: 45,fit: BoxFit.cover,),
                                               3.heightBox,
                                               Text("Fibre Count").text.gray500.bold.make(),
                                               2.heightBox,
@@ -107,7 +107,7 @@ class _FlashCardPageState extends State<FlashCardPage> {
                                         Container(
                                           child: Column(
                                             children: [
-                                              Image.network("https://cdn-icons-png.flaticon.com/128/2738/2738728.png",height: 45,width: 45,fit: BoxFit.cover,),
+                                              Image.network("https://cdn-icons-png.flaticon.com/128/2316/2316949.png",height: 45,width: 45,fit: BoxFit.cover,),
                                               3.heightBox,
                                               Text("Calories").text.gray500.bold.make(),
                                               2.heightBox,
@@ -117,7 +117,7 @@ class _FlashCardPageState extends State<FlashCardPage> {
                                         ),
 
                                       ],
-                                    ).p8(),
+                                    ).p12(),
                                     5.heightBox,
 
 
@@ -139,7 +139,7 @@ class _FlashCardPageState extends State<FlashCardPage> {
                                         Container(
                                           child: Column(
                                             children: [
-                                              Image.network("https://cdn-icons-png.flaticon.com/512/1656/1656157.png",height: 45,width: 45,fit: BoxFit.cover,),
+                                              Image.network("https://cdn-icons-png.flaticon.com/512/2736/2736244.png",height: 45,width: 45,fit: BoxFit.cover,),
                                               3.heightBox,
                                               Text("Protein Count").text.gray500.bold.make(),
                                               2.heightBox,
@@ -162,7 +162,7 @@ class _FlashCardPageState extends State<FlashCardPage> {
 
 
                                       ],
-                                    ).p8(),
+                                    ).p12(),
                                     //Text(FlashCardList[index].f_desc.toString()).text.xl.makeCentered().p4(),
 
 
@@ -172,12 +172,12 @@ class _FlashCardPageState extends State<FlashCardPage> {
 
                               ],
                             )
-                        ).height(context.screenHeight).width(context.screenWidth*0.9,).roundedSM.white.shadowLg.make(),
+                        ).height(context.isMobile?context.screenHeight:context.screenHeight).width(context.isMobile?context.screenWidth*0.9:context.screenWidth*0.5).roundedSM.white.shadowLg.make(),
                         back:  VxBox(child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             20.heightBox,
-                            Image.network(FlashCardList[index].f_img_back.toString(),height: context.screenHeight*0.3,width: context.screenWidth,fit: BoxFit.cover,),
+                            Image.network(FlashCardList[index].f_img_back.toString(),height: context.screenHeight*0.3,width: context.screenWidth,fit: BoxFit.contain,),
 
                             10.heightBox,
                             Column(
@@ -185,46 +185,50 @@ class _FlashCardPageState extends State<FlashCardPage> {
                               children: [
                                 Container(
                                   color: Color(int.parse(widget.catColor)),
-                                  child: Text("Intresting Facts").text.xl2.semiBold.white.makeCentered().p4(),
+                                  child: Text("Interesting Facts").text.xl2.white.makeCentered().p4(),
                                 ),
                                 VxBox(
                                   child: Column(
                                     children: [
+                                      10.heightBox,
                                       IntrestingfactsPage( facts: FlashCardList[index], ),
 
                                     ],
                                   )
                                 ).makeCentered(),
+                                10.heightBox,
 
                                 Container(
                                   color: Color(int.parse(widget.catColor)),
-                                  child: Text("Health Benefits").text.xl2.semiBold.white.makeCentered().p4(),
+                                  child: Text("Health Benefits").text.xl2.white.makeCentered().p4(),
                                 ),
                                 VxBox(
                                     child: Column(
                                       children: [
+                                        10.heightBox,
                                         HealthBenefits( health: FlashCardList[index],),
                                         //  Text(FlashCardList[index].intresting_facts![index])
                                       ],
                                     )
                                 ).makeCentered(),
-                                Container(
-                                  color: Color(int.parse(widget.catColor)),
-                                  child: Text("Recipe").text.xl2.semiBold.white.makeCentered().p4(),
-                                ),
-                                VxBox(
-                                    child: Column(
-                                      children: [
-                                        RecipeWiget( recipe: FlashCardList[index],),
-                                        //  Text(FlashCardList[index].intresting_facts![index])
-                                      ],
-                                    )
-                                ).makeCentered(),
+                                // Recipe code is here
+                                // Container(
+                                //   color: Color(int.parse(widget.catColor)),
+                                //   child: Text("Recipe").text.xl2.semiBold.white.makeCentered().p4(),
+                                // ),
+                                // VxBox(
+                                //     child: Column(
+                                //       children: [
+                                //         RecipeWiget( recipe: FlashCardList[index],),
+                                //         //  Text(FlashCardList[index].intresting_facts![index])
+                                //       ],
+                                //     )
+                                // ).makeCentered(),
 
 
-                                Align(
-                                  alignment: Alignment.centerRight,
-                                    child: Image.network(FlashCardList[index].footer_img.toString(),height: 60,width: 60,fit: BoxFit.cover,))
+                                // Align(
+                                //   alignment: Alignment.centerRight,
+                                //     child: Image.network(FlashCardList[index].footer_img.toString(),height: 60,width: 60,fit: BoxFit.cover,))
                               ],
                             ).p8()
 
@@ -237,7 +241,7 @@ class _FlashCardPageState extends State<FlashCardPage> {
                           ],
                         ).scrollVertical()
 
-                        ).height(context.screenHeight).width(context.screenWidth*0.9).roundedSM.white.shadowLg.make().p4(),
+                        ).height(context.isMobile?context.screenHeight:context.screenHeight).width(context.isMobile?context.screenWidth*0.9:context.screenWidth*0.5).roundedSM.white.shadowLg.make(),
 
                       );
                     //   VxBox(

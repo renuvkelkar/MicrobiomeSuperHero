@@ -59,10 +59,10 @@ class _IntroScreenState extends State<IntroScreen> {
             fit: BoxFit.cover),
         title: "Eat a rainbow of fruits and vegetables",
         styleTitle:
-        TextStyle(color: Color(0xff7FFFD4), fontSize: 30.0, fontWeight: FontWeight.bold, fontFamily: 'RobotoMono'),
+        TextStyle(color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.bold, fontFamily: 'RobotoMono'),
         description: "Ye indulgence unreserved connection alteration appearance",
         styleDescription:
-        TextStyle(color: Color(0xff7FFFD4), fontSize: 20.0, fontStyle: FontStyle.italic, fontFamily: 'Raleway'),
+        TextStyle(color: Colors.black, fontSize: 20.0, fontStyle: FontStyle.italic, fontFamily: 'Raleway'),
         backgroundColor: Colors.white,
         directionColorBegin: Alignment.topRight,
         directionColorEnd: Alignment.bottomLeft,
@@ -77,11 +77,11 @@ class _IntroScreenState extends State<IntroScreen> {
             fit: BoxFit.cover),
         title: "Fruits are your Best Friends",
         styleTitle:
-        TextStyle(color: Color(0xffFFDAB9), fontSize: 30.0, fontWeight: FontWeight.bold, fontFamily: 'RobotoMono'),
+        TextStyle(color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.bold, fontFamily: 'RobotoMono'),
         description:
         "Much evil soon high in hope do view. Out may few northward believing attempted. Yet timed being songs marry one defer men our. Although finished blessing do of",
         styleDescription:
-        TextStyle(color: Color(0xffFFDAB9), fontSize: 20.0, fontStyle: FontStyle.italic, fontFamily: 'Raleway'),
+        TextStyle(color: Colors.black, fontSize: 20.0, fontStyle: FontStyle.italic, fontFamily: 'Raleway'),
         backgroundColor: Colors.white,
 
         directionColorBegin: Alignment.topCenter,

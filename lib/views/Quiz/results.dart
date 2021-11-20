@@ -51,7 +51,7 @@ class _ResultsState extends State<Results> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  widget.correct >=2?
+                  widget.correct >=6?
                   Container(
                     child:  Column(
                       children: [

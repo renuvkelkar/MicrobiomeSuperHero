@@ -1,14 +1,15 @@
 import 'package:aahaarkarnti_chart_app/DemosplashScreen.dart';
 import 'package:aahaarkarnti_chart_app/provider/quiz_provider.dart';
+import 'package:aahaarkarnti_chart_app/views/SelectionScreen/selectionScreen.dart';
+import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'Admin/AddData.dart';
-import 'Admin/admin_dashboard.dart';
 import 'views/SplashScreen/splashScreen.dart';
 
 void main()async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.red,
         ),
-        home: DashBoard(),
+        home: SelectionScreen(),
       ),
     );
   }
