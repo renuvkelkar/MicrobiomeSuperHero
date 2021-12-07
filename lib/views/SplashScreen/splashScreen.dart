@@ -4,6 +4,7 @@ import 'package:aahaarkarnti_chart_app/views/DashBoard/DashBoard.dart';
 import 'package:aahaarkarnti_chart_app/views/IntroSlider/inroSlider.dart';
 import 'package:aahaarkarnti_chart_app/views/IntroSlider/introslider_web.dart';
 import 'package:aahaarkarnti_chart_app/views/SelectionScreen/selectionScreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import "package:velocity_x/velocity_x.dart";
 
@@ -18,18 +19,35 @@ class Splashscreen extends StatefulWidget {
   _SplashscreenState createState() => _SplashscreenState();
 }
 
-class _SplashscreenState extends State<Splashscreen> {
+class _SplashscreenState extends State<Splashscreen>with SingleTickerProviderStateMixin  {
+  late AnimationController _controller;
+
+  //
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   _controller.dispose();
+  // }
 
 
   @override
   void initState(){
     super.initState();
-    Timer(Duration(seconds: 5), (){
+    _controller =
+    AnimationController(duration: Duration(seconds: 30), vsync: this)
+      ..repeat();
+    Timer(Duration(seconds: 10), (){
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => context.isMobile?IntroScreen():IntroScreenWeb(),
       ));
     });
   }
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
   Widget build(BuildContext context) {
 
 
@@ -37,6 +55,7 @@ class _SplashscreenState extends State<Splashscreen> {
 
       home: SafeArea(
         child: Scaffold(
+
           body: ListView(
             children: <Widget>[
               Center(
@@ -55,7 +74,7 @@ class _SplashscreenState extends State<Splashscreen> {
                               children: [
                                 TextSpan(text: "Aahaar ", style: AppTheme.heading),
 
-                                TextSpan(text: "Chart", style: AppTheme.heading),
+                                TextSpan(text: "Buddy", style: AppTheme.heading),
                               ],
                             ),
                           ),
@@ -74,12 +93,83 @@ class _SplashscreenState extends State<Splashscreen> {
               SizedBox(height: 10,),
 
 
-              Container(
-                alignment: Alignment.bottomCenter,
+             context.isMobile? Container(
+                alignment: Alignment.center,
 
-                child: Image.network("https://image.freepik.com/free-vector/vitamin-food-infographic_23-2148490790.jpg", fit: BoxFit.cover,),
+                child: Column(
+                  children: [
+                    Stack(
+                      children: [
+                        RotationTransition(
+                            alignment: Alignment.center,
+                            turns: _controller,
+                            child: Image.asset("assets/Images/back.png",height: context.isMobile?context.screenHeight*0.50:context.screenHeight*0.75, fit: BoxFit.cover,)),
+                        Positioned(
+                          left: 122,
+                          top: 122,
+                          child: CircleAvatar(
+                            radius:72,
+                            backgroundImage: AssetImage('assets/Images/logo.png'),
+                            // child: Image.asset("assets/Images/logo.png")
+                          ),
+                        )
+                        // CircleAvatar(
+                        //   radius: 50,
+                        //   backgroundImage: AssetImage('assets/Images/logo.png'),
+                        //   // child: Image.asset("assets/Images/logo.png")
+                        // ).pOnly(left: 150,top: 170)
+                      ],
+                    ),
+                    SizedBox(height: context.isMobile?120:context.screenHeight*0.2,),
+                    Container(
 
+                      child: Column(
+                        children: [
+                          Text("Developed by"),
+                          Image.asset("assets/Images/logo_new.png",height: 60,width: 100,fit: BoxFit.contain,)
+                        ],
+                      ),
+                    )
+                  ],
                 ),
+
+              ):
+             Container(
+               alignment: Alignment.center,
+
+               child: Column(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                 children: [
+
+                   Stack(
+                     children: [
+                       RotationTransition(
+                           alignment: Alignment.center,
+                           turns: _controller,
+                           child: Image.asset("assets/Images/back.png",height: context.screenHeight*0.65, fit: BoxFit.cover,)),
+                       CircleAvatar(
+                         radius: 100,
+                         backgroundImage: AssetImage('assets/Images/logo.png'),
+                         // child: Image.asset("assets/Images/logo.png")
+                       ).pOnly(left: 140,top: 140)
+                     ],
+                   ),
+                   Container(
+
+                     child: Column(
+                       children: [
+                         Text("Developed by"),
+                         Image.asset("assets/Images/logo_new.png",height: 60,width: 100,fit: BoxFit.contain,)
+                       ],
+                     ),
+                   ),
+
+                 ],
+
+               ),
+
+             )
+
 
             ],
           ),

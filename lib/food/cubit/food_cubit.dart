@@ -10,20 +10,100 @@ const mockFoodItems = [
   FoodItem(
     name: 'apple',
     imgUrl:
-        'https://image.shutterstock.com/image-vector/simple-apple-flat-style-vector-260nw-1355114489.jpg',
-    cal: 10,
+        'https://cdn-icons-png.flaticon.com/512/415/415733.png',
+    cal: 52,
+    protine: 25,
+    fiber: 4,
   ),
   FoodItem(
     name: 'broccoli',
     imgUrl:
-        'https://image.freepik.com/free-vector/sticker-design-with-broccoli-isolated_1308-58801.jpg',
-    cal: 10,
+        'https://cdn-icons-png.flaticon.com/512/2909/2909841.png',
+    cal: 45,
+    protine: 2,
+    fiber: 5,
+  ),
+
+  FoodItem(
+    name: 'cloves',
+    imgUrl:
+    'https://cdn-icons-png.flaticon.com/512/4788/4788074.png',
+    cal: 2,
+    protine: 1,
+    fiber: 0,
   ),
   FoodItem(
-    name: 'pizza',
+    name: 'Carrot',
     imgUrl:
-        'https://image.freepik.com/free-vector/top-view-italian-pizza-sticker-white-background_1308-65194.jpg',
-    cal: 10,
+    'https://cdn-icons-png.flaticon.com/512/2909/2909782.png',
+    cal: 41,
+    protine: 1,
+    fiber: 2,
+  ),
+  FoodItem(
+    name: 'Orange',
+    imgUrl:
+    'https://cdn-icons-png.flaticon.com/512/1728/1728729.png',
+    cal: 20,
+    protine: 1,
+    fiber: 3,
+  ),
+  FoodItem(
+    name: 'walnut',
+    imgUrl:
+    'https://cdn-icons-png.flaticon.com/512/1728/1728755.png',
+    cal: 40,
+    protine: 4,
+    fiber: 7,
+  ),
+  FoodItem(
+    name: 'Cashew',
+    imgUrl:
+    'https://cdn-icons-png.flaticon.com/512/1625/1625070.png',
+    cal: 8,
+    protine: 5,
+    fiber: 3,
+  ),
+  FoodItem(
+    name: 'Almonds',
+    imgUrl:
+    'https://cdn-icons-png.flaticon.com/512/2224/2224157.png',
+    cal: 6,
+    protine: 3,
+    fiber: 1,
+  ),
+  FoodItem(
+    name: 'Chilli',
+    imgUrl:
+    'https://cdn-icons-png.flaticon.com/512/766/766024.png',
+    cal: 3,
+    protine: 0,
+    fiber: 1,
+  ),
+  FoodItem(
+    name: 'Banana',
+    imgUrl:
+    'https://cdn-icons-png.flaticon.com/512/3143/3143645.png',
+    cal: 35,
+    protine: 1,
+    fiber: 3,
+  ),
+
+  FoodItem(
+    name: 'Tomato',
+    imgUrl:
+    'https://cdn-icons-png.flaticon.com/512/4264/4264717.png',
+    cal: 22,
+    protine: 1,
+    fiber: 1,
+  ),
+  FoodItem(
+    name: 'Soyabean',
+    imgUrl:
+    'https://cdn-icons-png.flaticon.com/512/2224/2224180.png',
+    cal: 2,
+    protine: 9,
+    fiber: 3,
   ),
 ];
 
@@ -62,6 +142,13 @@ class FoodCubit extends Cubit<FoodState> {
     emit(
       state.copyWith(
         items: [...state.items]..remove(item),
+      ),
+    );
+  }
+  Future<void> removeAll() async {
+    emit(
+      state.copyWith(
+        items: [...state.items]..clear(),
       ),
     );
   }

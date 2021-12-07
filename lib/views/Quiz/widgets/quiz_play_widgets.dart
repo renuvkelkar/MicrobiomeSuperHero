@@ -50,7 +50,7 @@ class _OptionTileState extends State<OptionTile> {
             child: Text(
               widget.sno,
               style: TextStyle(
-                color: widget.optionSelected == widget.option?Colors.white:Colors.grey,
+                color: widget.optionSelected == widget.option?Colors.white:Colors.black,
               ),
             ),
           ),
@@ -58,7 +58,7 @@ class _OptionTileState extends State<OptionTile> {
             width: 8,
           ),
           Text(widget.option, style: TextStyle(
-              fontSize: widget.optionSelected == widget.option? 22:17, color:  widget.optionSelected == widget.option?decideColor():Colors.black54
+              fontSize: widget.optionSelected == widget.option? 22:17, color:  widget.optionSelected == widget.option?decideColor():Colors.black
           ),)
         ],
       ),

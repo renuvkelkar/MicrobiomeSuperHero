@@ -1,5 +1,6 @@
 import 'package:aahaarkarnti_chart_app/DemosplashScreen.dart';
 import 'package:aahaarkarnti_chart_app/provider/quiz_provider.dart';
+import 'package:aahaarkarnti_chart_app/views/Quiz/quiz_play.dart';
 import 'package:aahaarkarnti_chart_app/views/SelectionScreen/selectionScreen.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       create: (_)=>QuizProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Aahaar Chart',
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.red,
         ),
-        home: SelectionScreen(),
+        home: Splashscreen(),
       ),
     );
   }

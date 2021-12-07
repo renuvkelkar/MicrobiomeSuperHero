@@ -19,6 +19,8 @@ class _IntroScreenState extends State<IntroScreen> {
 
     slides.add(
       new Slide(
+
+
        //  heightImage: context.screenHeight*0.7,
        // widthImage: context.screenWidth*0.7,
        // centerWidget: Image.network("https://image.freepik.com/free-photo/top-view-vegetables-fruits-lettuce-tomatoes-cucumber-dill-cherry-tomatoes-zucchini-green-onion-parsley-apple-lemon-kiwi-free-space-center_140725-59431.jpg"),
@@ -32,18 +34,15 @@ class _IntroScreenState extends State<IntroScreen> {
        // pathImage: "https://image.freepik.com/free-photo/top-view-fresh-fruits-composition-mellow-sliced-ripe-fruits-dark-surface-fruit-fresh-vitamine-mellow-ripe_140725-118021.jpg",
         maxLineTitle: 2,
         styleTitle:
-        TextStyle(color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.bold, fontFamily: 'RobotoMono'),
+        TextStyle(color: Colors.black, fontSize: 25.0, fontWeight: FontWeight.bold, fontFamily: 'RobotoMono'),
         description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-            // " Aenean commodo ligula eget dolor. Aenean massa. "
-            // "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus"
-            // ". Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. "
-            // "Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,",
+        "A healthy balanced diet can prevent chronic diseases.",
+
         styleDescription:
-        TextStyle(color: Colors.white, fontSize: 20.0, fontStyle: FontStyle.italic, fontFamily: 'Raleway'),
+        TextStyle(color: Colors.black, fontSize: 20.0,fontFamily: 'Raleway'),
         marginDescription: EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 70.0),
 
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xff38aa87),
         //backgroundImage: "https://image.freepik.com/free-photo/top-view-fresh-fruits-composition-mellow-sliced-ripe-fruits-dark-surface-fruit-fresh-vitamine-mellow-ripe_140725-118021.jpg",
         directionColorBegin: Alignment.topLeft,
         directionColorEnd: Alignment.bottomRight,
@@ -57,13 +56,13 @@ class _IntroScreenState extends State<IntroScreen> {
             height: 300,
             width: 300,
             fit: BoxFit.cover),
-        title: "Eat a rainbow of fruits and vegetables",
+        title: "Rainbow fruits and vegetables",
         styleTitle:
-        TextStyle(color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.bold, fontFamily: 'RobotoMono'),
-        description: "Ye indulgence unreserved connection alteration appearance",
+        TextStyle(color: Colors.black, fontSize: 25.0, fontWeight: FontWeight.bold, fontFamily: 'RobotoMono'),
+        description: "Eating diverse colourful fruits and vegetables gives our body the vitamins and minerals it needs.",
         styleDescription:
-        TextStyle(color: Colors.black, fontSize: 20.0, fontStyle: FontStyle.italic, fontFamily: 'Raleway'),
-        backgroundColor: Colors.white,
+        TextStyle(color: Colors.black, fontSize: 20.0,  fontFamily: 'Raleway'),
+        backgroundColor: Colors.yellowAccent.shade400,
         directionColorBegin: Alignment.topRight,
         directionColorEnd: Alignment.bottomLeft,
       ),
@@ -75,14 +74,14 @@ class _IntroScreenState extends State<IntroScreen> {
             height: 300,
             width: 300,
             fit: BoxFit.cover),
-        title: "Fruits are your Best Friends",
+        title: "Fruits as your best friends",
         styleTitle:
-        TextStyle(color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.bold, fontFamily: 'RobotoMono'),
+        TextStyle(color: Colors.black, fontSize: 25.0, fontWeight: FontWeight.bold, fontFamily: 'RobotoMono'),
         description:
-        "Much evil soon high in hope do view. Out may few northward believing attempted. Yet timed being songs marry one defer men our. Although finished blessing do of",
+        "Fruits are rich in nutrients that can help keep us healthy.",
         styleDescription:
-        TextStyle(color: Colors.black, fontSize: 20.0, fontStyle: FontStyle.italic, fontFamily: 'Raleway'),
-        backgroundColor: Colors.white,
+        TextStyle(color: Colors.black, fontSize: 20.0, fontFamily: 'Raleway'),
+        backgroundColor: Colors.green,
 
         directionColorBegin: Alignment.topCenter,
         directionColorEnd: Alignment.bottomCenter,
@@ -102,7 +101,8 @@ class _IntroScreenState extends State<IntroScreen> {
   Widget renderNextBtn() {
     return Icon(
       Icons.navigate_next,
-      color: Color(0xffF3B4BA),
+      color: Colors.black,
+      //color: Color(0xffF3B4BA),
       size: 35.0,
     );
   }
@@ -110,14 +110,16 @@ class _IntroScreenState extends State<IntroScreen> {
   Widget renderDoneBtn() {
     return Icon(
       Icons.done,
-      color: Color(0xffF3B4BA),
+      color: Colors.black,
+    //color: Color(0xffF3B4BA),
     );
   }
 
   Widget renderSkipBtn() {
     return Icon(
       Icons.skip_next,
-      color: Color(0xffF3B4BA),
+      color: Colors.black,
+     // color: Color(0xffF3B4BA),
     );
   }
 
@@ -131,6 +133,7 @@ class _IntroScreenState extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
 
       body: IntroSlider(
         // List slides
@@ -150,8 +153,10 @@ class _IntroScreenState extends State<IntroScreen> {
         doneButtonStyle: myButtonStyle(),
 
         // Dot indicator
-        colorDot: Color(0x33FFA8B0),
-        colorActiveDot: Color(0xffFFA8B0),
+        colorDot: Colors.black,
+        colorActiveDot: Colors.black,
+        //colorDot: Color(0x33FFA8B0),
+        //colorActiveDot: Color(0xffFFA8B0),
         sizeDot: 13.0,
 
         // Show or hide status bar

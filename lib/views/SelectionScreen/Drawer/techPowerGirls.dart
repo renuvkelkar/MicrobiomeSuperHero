@@ -6,19 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 
-class Privacy extends StatefulWidget {
-
+class TechPowerGirls extends StatefulWidget {
   @override
-
-  _PrivacyState createState() => _PrivacyState();
+  _TechPowerGirlsState createState() => _TechPowerGirlsState();
 }
 
-class _PrivacyState extends State<Privacy> {
-  bool isloading = true;
+class _TechPowerGirlsState extends State<TechPowerGirls> {
   @override
   void initState() {
     super.initState();
-    isloading = false;
     // Enable hybrid composition.
     // if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
   }
@@ -27,11 +23,11 @@ class _PrivacyState extends State<Privacy> {
     return Scaffold(
       appBar:AppBar(
         backgroundColor: Colors.red,
-        title: Text("Aahaar Kranti"),
+        title: Text("About Developers"),
       ),
       body:
       WebView(
-        initialUrl: "https://gistusa.org/aahaarkranti/",
+        initialUrl: "https://techpowergirls.net/",
         javascriptMode: JavascriptMode.unrestricted,
       ),
     );

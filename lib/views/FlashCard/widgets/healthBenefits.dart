@@ -17,6 +17,7 @@ class _HealthBenefitsState extends State<HealthBenefits> {
 
     return  ListView.builder(
         shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
 
         itemCount: widget.health.health_benefits!.length,
         itemBuilder: (context,index){
@@ -25,7 +26,7 @@ class _HealthBenefitsState extends State<HealthBenefits> {
               Image.network(widget.health.footer_img.toString(),height: 20,width: 20,fit: BoxFit.cover,),
               10.widthBox,
            //   Icon(Icons.check_box,color: Colors.grey.shade500),
-              Text(widget.health.health_benefits![index].toString()).text.xl.make(),
+              Expanded(child: Text(widget.health.health_benefits![index].toString()).text.xl.make(),)
 
             ],
           ).p8();

@@ -13,6 +13,7 @@ class BannerList extends StatelessWidget {
   final ref = FirebaseFirestore.instance.collection("Banner");
   Widget build(BuildContext context) {
     return Container(
+      // color: Colors.black,
       width: context.isMobile?context.screenWidth:context.screenWidth*0.5,
       height:context.isMobile? context.screenHeight*0.3:context.screenHeight*0.5,
 
@@ -25,7 +26,8 @@ class BannerList extends StatelessWidget {
             return VxSwiper.builder(
                 itemCount: snapshot.data!.docs.length,
                 scrollDirection: Axis.horizontal,
-                aspectRatio: 16/9,
+                // aspectRatio: 16/9,
+                height:context.isMobile? context.screenHeight*0.3:context.screenHeight*0.5,
                 enableInfiniteScroll: true,
                 initialPage: 0,
                 viewportFraction: 1.0,
@@ -37,18 +39,21 @@ class BannerList extends StatelessWidget {
                 autoPlayAnimationDuration: Duration(milliseconds: 800),
                 autoPlayCurve: Curves.easeInCubic,
                 itemBuilder: (context, index) {
-                  return Container(
-                    width: context.isMobile?context.screenWidth:context.screenWidth*0.50,
-                    height:context.isMobile? context.screenHeight*0.5:context.screenHeight*0.6,
-
+                  return VxBox(
                     child: Image.network(snapshot.data!.docs[index]['banner_img'],fit: BoxFit.cover,),
-                  ).pOnly(top: 10);
+                  ).height(context.isMobile? context.screenHeight*0.5:context.screenHeight*0.6,).width( context.isMobile?context.screenWidth:context.screenWidth*0.50,).makeCentered();
                 });
           }
           else{
-            return CircularProgressIndicator(
-              backgroundColor: Colors.white,
-              strokeWidth: 1,
+            return Center(
+              child: Container(
+                height: 30,
+                width: 30,
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.white,
+                  strokeWidth: 1,
+                ),
+              ),
             );
           }
 

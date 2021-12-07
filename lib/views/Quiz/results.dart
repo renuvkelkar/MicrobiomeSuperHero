@@ -1,6 +1,8 @@
 
 
+import 'package:aahaarkarnti_chart_app/views/DashBoard/DashBoard.dart';
 import 'package:aahaarkarnti_chart_app/views/Quiz/quiz_play.dart';
+import 'package:aahaarkarnti_chart_app/views/SelectionScreen/selectionScreen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -55,7 +57,7 @@ class _ResultsState extends State<Results> {
                   Container(
                     child:  Column(
                       children: [
-                        Text("Good Job!!"),
+                        Text("Good Job!!").text.semiBold.xl2.make(),
                         Lottie.network(
                             'https://assets7.lottiefiles.com/packages/lf20_xldzoar8.json',
                             height: 100,
@@ -67,7 +69,7 @@ class _ResultsState extends State<Results> {
                   Container(
                     child:  Column(
                       children: [
-                        Text("Well Done!You want to try again"),
+                        Text("Well Done!You want to try again").text.semiBold.xl2.make(),
                         Lottie.network(
                             'https://assets5.lottiefiles.com/private_files/lf30_ansmdrzi.json',
                             height: 100,
@@ -110,35 +112,62 @@ class _ResultsState extends State<Results> {
                   20.heightBox,
                   Text(
                     "Score : ${widget.correct}/ ${widget.total}",
-                    style: TextStyle(fontSize: 25),
-                  ),
+                    ).text.xl3.semiBold.make().p4(),
+
                   5.heightBox,
-                  "Correct - ${widget.correct}".text.lg.make().p4(),
-                  "Wrong - ${widget.incorrect}".text.lg.make().p4(),
+                  "Correct: ${widget.correct}".text.xl2.make().p4(),
+                  "Wrong: ${widget.incorrect}".text.xl2.make().p4(),
 
                   40.heightBox,
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => QuizPlay()),
-                      );
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                      decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(30)),
-                      child: Text(
-                        "Go to home",
-                        style: TextStyle(color: Colors.white, fontSize: 19),
-                      ),
-                    ),
-                  )
+
                 ],
               ),
             ),
           ),
+          Positioned(
+            bottom: context.isMobile?30:100,left: context.isMobile?context.screenWidth*0.2:context.screenWidth*0.4,
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SelectionScreen()),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                    decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: Text(
+                      "Go to home",
+                      style: TextStyle(color: Colors.white, fontSize: 19),
+                    ),
+                  ),
+                ),
+                10.widthBox,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => QuizPlay()),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                    decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: Text(
+                      "New Game",
+                      style: TextStyle(color: Colors.white, fontSize: 19),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

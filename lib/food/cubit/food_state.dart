@@ -13,7 +13,8 @@ class FoodState extends Equatable {
   final List<FoodItem> items;  //[10,20,40]
 
   int get totalCalories => items.fold(0, (acc, cur) => acc + cur.cal);
-
+  int get totalprotine => items.fold(0, (acc, cur) => acc + cur.protine);
+  int get totalfiber => items.fold(0, (acc, cur) => acc + cur.fiber);
   @override
   List<Object?> get props => [status, items];
 

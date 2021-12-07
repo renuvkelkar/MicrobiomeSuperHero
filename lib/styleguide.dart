@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 
+
 class AppTheme {
   static const TextStyle start_heading1 = TextStyle(
-    fontFamily: 'Chewy',
+    fontFamily: 'KiteOne',
     color: Colors.black,
     fontSize: 38,
     fontWeight: FontWeight.w600,
@@ -66,8 +67,8 @@ class AppTheme {
   );
 
   static final TextStyle heading = TextStyle(
-    fontFamily: 'Chewy',
-    fontWeight: FontWeight.w900,
+    fontFamily: 'KiteOne',
+    fontWeight: FontWeight.bold,
     fontSize: 50,
     color: Colors.white,
     letterSpacing: 1.2,

@@ -20,8 +20,8 @@ class _QuizDataState extends State<GameData> {
   addData() {
     addToGame = {
       'imgurl': imgurlcontroller.text,
-      'option1': namecontroller.text,
-      'option2': valuecontroller.text,
+      'name': namecontroller.text,
+      'value': valuecontroller.text,
 
 
     }; //day2

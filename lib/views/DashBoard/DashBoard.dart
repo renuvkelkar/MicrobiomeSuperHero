@@ -2,6 +2,7 @@ import 'package:aahaarkarnti_chart_app/model/category_model.dart';
 import 'package:aahaarkarnti_chart_app/views/Common/Header.dart';
 import 'package:aahaarkarnti_chart_app/views/DashBoard/DashBoardSlider.dart';
 import 'package:aahaarkarnti_chart_app/views/FlashCard/flashCardPage.dart';
+import 'package:aahaarkarnti_chart_app/views/SelectionScreen/selectionScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,17 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.orange.shade300,
       appBar: AppBar(
+        title: Text("Aahaar Chart"),
+        centerTitle: true,
         backgroundColor: Colors.red.shade600,
         elevation: 0,
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => SelectionScreen()));
+          }, icon: Icon(Icons.home))
+        ],
 
 
       ),
@@ -36,7 +44,9 @@ class _DashBoardState extends State<DashBoard> {
              mainAxisAlignment: MainAxisAlignment.center,
              crossAxisAlignment: CrossAxisAlignment.center,
              children: [
-               BannerList(),
+               Container(color: Colors.red,
+                   child: BannerList().pOnly(bottom: 8)),
+             // VxBox().height(5).red500.makeCentered(),
                Center(
                  child: StreamBuilder(
                      stream: CatRef.snapshots(),

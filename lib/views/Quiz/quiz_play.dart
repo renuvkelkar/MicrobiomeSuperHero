@@ -3,6 +3,7 @@ import 'package:aahaarkarnti_chart_app/provider/quiz_provider.dart';
 import 'package:aahaarkarnti_chart_app/services/database.dart';
 import 'package:aahaarkarnti_chart_app/views/Quiz/results.dart';
 import 'package:aahaarkarnti_chart_app/views/Quiz/widgets/quiz_play_widgets.dart';
+import 'package:aahaarkarnti_chart_app/views/SelectionScreen/selectionScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -66,6 +67,13 @@ class _QuizPlayState extends State<QuizPlay> {
         title: "Lets play Quiz!".text.make(),
         centerTitle: true,
         backgroundColor: Colors.teal,
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => SelectionScreen()));
+          }, icon: Icon(Icons.home))
+        ],
+
       ),
       body: isLoading
           ? SingleChildScrollView(
@@ -86,7 +94,7 @@ class _QuizPlayState extends State<QuizPlay> {
                       //Image.network("https://image.freepik.com/free-vector/cartoon-vegetables-fresh-vegan-veggies-raw-vegetable-green-zucchini-celery-lettuce-tomato-carrot-illustration-set_102902-1204.jpg",height: context.screenHeight * 0.30,width: context.screenWidth,fit: BoxFit.cover,),
                          10.heightBox,
                         Container(
-                            height: context.screenHeight*0.9,
+                            height: context.screenHeight*0.8,
                             width: context.screenWidth * 0.95,
                             child: Consumer<QuizProvider>(
                               builder:(_,model,child)=> PageView.builder(
@@ -174,19 +182,17 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.network(model.questions[widget.index].imgurl,height:context.isMobile? context.screenHeight*0.3:context.screenHeight*0.4,width:context.isMobile? context.screenWidth:context.screenWidth*0.5,fit: BoxFit.cover,),
-            10.heightBox,
+            5.heightBox,
             VxBox(
               // margin: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                "Q${widget.index + 1}: ${model.questions[widget.index].question}",
-                style:
-                    TextStyle(fontSize: 18, color: Colors.black.withOpacity(0.8)),
-              ).py8().px8(),
-            ).make().capsule(
-                  width: context.isMobile?context.screenWidth:context.screenWidth*0.6,
-                  height: 40,
-                  backgroundColor: Colors.white,
-                ),
+              child: Center(
+                child: Text(
+                  "Q${widget.index + 1}: ${model.questions[widget.index].question}",
+                  style:
+                      TextStyle(fontSize: 18, fontWeight: FontWeight.bold,  color: Colors.white),
+                ).p16(),
+              ),
+            ).make(),
             5.heightBox,
           ListView.builder(
                 shrinkWrap: true,

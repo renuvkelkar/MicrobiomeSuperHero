@@ -20,7 +20,9 @@ class _SelectionScreenState extends State<SelectionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        title: Text("Aahaar Buddy"),
+        centerTitle: true,
+        backgroundColor: Colors.redAccent,
       ),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
@@ -37,7 +39,7 @@ class _SelectionScreenState extends State<SelectionScreen> {
               "https://image.freepik.com/free-vector/empty-sky-nature-scene-park_1308-50041.jpg",
               height: context.screenHeight,
               width: context.screenWidth,
-              fit: BoxFit.cover,
+              fit: context.isMobile?BoxFit.cover:BoxFit.fill,
             ),
           ),
           // Lottie.network(
@@ -114,8 +116,10 @@ class _SelectionScreenState extends State<SelectionScreen> {
 
             ],
           ).py(100).px(50):
-          Row(mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          Wrap(
+            direction: Axis.horizontal,
+            //mainAxisAlignment: MainAxisAlignment.center,
+            //crossAxisAlignment: CrossAxisAlignment.center,
 
             children: [
 
@@ -171,7 +175,7 @@ class _SelectionScreenState extends State<SelectionScreen> {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => GamePage()));
+                      context, MaterialPageRoute(builder: (_) => FoodPage()));
                 },
                 child: Container(
                   height: context.screenHeight * 0.2,
@@ -209,24 +213,24 @@ class _SelectionScreenState extends State<SelectionScreen> {
             ),
           ):
           Positioned(
-            bottom: 0,left: context.percentWidth*0.60,
+            bottom: 0,left:400,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Lottie.network(
                     'https://assets7.lottiefiles.com/private_files/lf30_cdui7M.json',
-                    height: 240,
-                    width: 200,
+                    height: 200,
+                    width: 180,
                     fit: BoxFit.cover),
                 Lottie.network(
                     'https://assets6.lottiefiles.com/packages/lf20_nz20vA.json',
-                    height: 280,
-                    width: 200,
+                    height: 200,
+                    width: 180,
                     fit: BoxFit.cover),
                 Lottie.network(
                     'https://assets9.lottiefiles.com/packages/lf20_0wtvp7yg.json',
                     height: 200,
-                    width: 300,
+                    width: 180,
                     fit: BoxFit.cover)
               ],
             ),
